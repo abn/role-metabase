@@ -1,0 +1,3 @@
+---
+dependencies:
+    - { role: copr-repository, copr_repository: "abn/repository", copr_repository_action: "install" }

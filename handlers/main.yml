@@ -1,0 +1,9 @@
+---
+- name: restart metabase
+  become: yes
+  service:
+    name: metabase
+    state: restarted
+  tags:
+    - metabase
+    - metabase-restart

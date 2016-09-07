@@ -1,0 +1,8 @@
+---
+# metabase rpm version to use
+metabase_version: 0.19.3-1
+
+# variables are expanded into /etc/sysconfig/metabase
+# for usage see metabase.sysconfig.j2
+metabase_variables:
+  MB_JAVA_OPTS: "-Xmx512m"

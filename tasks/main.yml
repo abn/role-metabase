@@ -1,0 +1,30 @@
+---
+- name: install metabase package
+  become: yes
+  package:
+    name: metabase-{{ metabase_version }}
+    state: present
+  tags:
+    - metabase
+    - metabase-package
+
+- name: add sysconfig file
+  become: yes
+  template:
+    src: metabase.sysconfig.j2
+    dest: /etc/sysconfig/metabase
+    owner: root
+    group: metabase
+  tags:
+    - metabase
+    - metabase-config
+
+- name: enable and start metabase service
+  become: yes
+  service:
+    name: metabase
+    state: started
+    enabled: yes
+  tags:
+    - metabase
+    - metabase-start
