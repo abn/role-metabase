@@ -1,8 +1,19 @@
 ---
 # metabase rpm version to use
-metabase_version: 0.19.3-1
+metabase_version: 0.19.3
+
+# metabase configuration
+metabase_port: 3000
+metabase_db_automigrate: yes
+metabase_password_complexity: strong
 
 # variables are expanded into /etc/sysconfig/metabase
 # for usage see metabase.sysconfig.j2
-metabase_variables:
+metabase_default_variables:
+  MB_DB_AUTOMIGRATE: "{{ metabase_db_automigrate | bool | lower }}"
+  MB_JETTY_PORT: "{{  metabase_port }}"
+  MB_PASSWORD_COMPLEXITY: "{{ metabase_password_complexity }}"
   MB_JAVA_OPTS: "-Xmx512m"
+
+# specify any extra configuraiton environment variables, or values that overides default here
+metabase_variables: {}

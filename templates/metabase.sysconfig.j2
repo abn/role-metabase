@@ -1,6 +1,10 @@
 # {{ ansible_managed }}
 # /etc/sysconfig/metabase
 
+{% for variable in metabase_default_variables %}{% if variable not in metabase_variables %}
+{{ variable }}={{ metabase_default_variables[variable] }}
+{% endif %}{% endfor %}
+
 {% for variable in metabase_variables %}
 {{ variable }}={{ metabase_variables[variable] }}
 {% endfor %}
